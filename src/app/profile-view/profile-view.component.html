@@ -1,0 +1,138 @@
+<app-navigation-bar></app-navigation-bar>
+<br />
+<mat-card class="profile-details">
+  <mat-card-header>
+    <mat-card-title>Your Profile Details</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem"
+        ><b> Username: </b> {{ this.user.Username }}</mat-list-item
+      >
+      <mat-list-item role="listitem"
+        ><b> Email: </b> {{ this.user.Email }}</mat-list-item
+      >
+      <mat-list-item role="listitem"
+        ><b> Birthday: </b>
+        {{ this.user.Birthday | date: "mediumDate" }}</mat-list-item
+      >
+    </mat-list>
+  </mat-card-content>
+
+  <!-- <mat-dialog-content
+      ><b> Username: </b> {{ this.user.Username }}</mat-dialog-content
+    >
+    <mat-dialog-content
+      ><b> Email: </b> {{ this.user.Email }}</mat-dialog-content
+    >
+    <mat-dialog-content>
+      <b> Birthday: </b>
+      {{ this.user.Birthday | date: "mediumDate" }}</mat-dialog-content
+    >
+  </mat-card-title-group> -->
+</mat-card>
+<br />
+<br />
+
+<mat-card>
+  <mat-card-header class="update-profile">
+    <mat-card-title>Update Your Information</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="userData.Username"
+          placeholder="Username"
+          type="text"
+          name="Username"
+          disabled
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="userData.Password"
+          placeholder="Password"
+          type="password"
+          name="Password"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="userData.Email"
+          placeholder="Email"
+          type="email"
+          name="Email"
+          required
+        />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="updateUserInformation()" color="primary">
+      Update
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<br />
+
+<h1 class="favMovie-list-title">Your Favorite Movies</h1>
+<div class="favMovie-list-container">
+  <mat-card *ngFor="let movie of favMovies; let i = index">
+    <mat-dialog-content>
+      <mat-card-title>{{ movie.Title }}</mat-card-title>
+      <mat-card-subtitle>
+        <img src="{{ movie.ImagePath }}" />
+      </mat-card-subtitle>
+    </mat-dialog-content>
+    <mat-card-actions>
+      <button
+        mat-stroked-button
+        aria-label="Close the movie details button"
+        (click)="
+          openSingleMovieView(movie.Title, movie.ImagePath, movie.Description)
+        "
+        color="primary"
+      >
+        See More
+      </button>
+      <button
+        mat-stroked-button
+        aria-label="Close the movie details button"
+        (click)="openDirectorView(movie.Director.Name, movie.Director.Bio)"
+        color="primary"
+      >
+        Director
+      </button>
+      <button
+        mat-stroked-button
+        aria-label="Close the movie details button"
+        (click)="openGenreView(movie.Genre.Name, movie.Genre.Description)"
+        color="primary"
+      >
+        Genre
+      </button>
+
+      <!-- Favorite Icon -->
+      <mat-icon
+        class="favorite-icon"
+        *ngIf="checkFavorites(movie._id)"
+        (click)="toggleFavIcon(movie._id)"
+        color="primary"
+        >favorite</mat-icon
+      >
+      <mat-icon
+        class="favorite-icon"
+        *ngIf="!checkFavorites(movie._id)"
+        (click)="toggleFavIcon(movie._id)"
+        color="primary"
+        >favorite_border</mat-icon
+      >
+    </mat-card-actions>
+  </mat-card>
+</div>
