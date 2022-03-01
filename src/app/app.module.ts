@@ -14,9 +14,40 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { RouterModule, Routes } from '@angular/router';
+import { MovieViewComponent } from './movie-view/movie-view.component';
+import { DirectorViewComponent } from './director-view/director-view.component';
+import { GenreViewComponent } from './genre-view/genre-view.component';
+import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
+
+const appRoutes: Routes = [
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: ProfileViewComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+];
 
 @NgModule({
-  declarations: [AppComponent, UserRegistrationFormComponent, UserLoginFormComponent],
+  declarations: [
+    AppComponent,
+    UserRegistrationFormComponent,
+    UserLoginFormComponent,
+    MovieCardComponent,
+    WelcomePageComponent,
+    MovieViewComponent,
+    DirectorViewComponent,
+    GenreViewComponent,
+    ProfileViewComponent,
+    NavigationBarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,6 +60,12 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
     MatDialogModule,
     MatSnackBarModule,
     FormsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatGridListModule,
+    MatListModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent],
