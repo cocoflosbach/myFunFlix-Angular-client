@@ -10,6 +10,9 @@ import { of } from 'rxjs';
   styleUrls: ['./user-registration-form.component.scss'],
 })
 export class UserRegistrationFormComponent implements OnInit {
+  /**
+   * Gets user input values and stores in userData
+   */
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   constructor(
@@ -20,7 +23,13 @@ export class UserRegistrationFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+   * call API end-point to register a new user
+   * @function registerUser
+   * @param userData {object}
+   * @return new user's data in json format
+   */
+
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(
       (response) => {

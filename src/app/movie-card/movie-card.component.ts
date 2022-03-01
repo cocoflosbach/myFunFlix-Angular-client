@@ -23,16 +23,15 @@ export class MovieCardComponent implements OnInit {
     public snackBar: MatSnackBar
   ) {}
 
-  /**
-   * Gets movie list when the coponent is initiated
-   */
   ngOnInit(): void {
     this.getMovies();
     this.getFavMovies();
   }
 
   /**
-   * Gets all movies
+   * call API end-point to get all movies
+   * @function getMovies
+   * @return all movies in the database.
    */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((response: any) => {
@@ -42,6 +41,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * call API end-point to get current user details
+   * @function getUserDetails
+   * @return current user's data in json format
+   */
   getUserDetails(): void {
     this.fetchApiData.getUser().subscribe((response: any) => {
       this.user = response;
@@ -51,6 +55,9 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens a dialog to display detailed view of selected movie.
+   */
   openSingleMovieView(
     title: string,
     imagePath: any,
@@ -66,6 +73,9 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens a dialog to display Director information of selected movie.
+   */
   openDirectorView(name: string, bio: string): void {
     this.dialog.open(DirectorViewComponent, {
       data: {
@@ -76,6 +86,9 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens a dialog to display Genre information of selected movie.
+   */
   openGenreView(name: string, description: string): void {
     this.dialog.open(GenreViewComponent, {
       data: {
@@ -86,13 +99,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  /* openProfileView(): void {
-    this.dialog.open(ProfileViewComponent),
-      {
-        width: '800px',
-      };
-  } */
-
+  /**
+   * call API end-point to get current user's favorite movie list
+   * @function getFavMovies
+   * @return current user's favorite movie list
+   */
   getFavMovies(): void {
     this.fetchApiData.getUser().subscribe((response: any) => {
       this.user = response;
@@ -102,6 +113,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * call API end-point to add a movie from user's favorite movie list
+   * @function addFavoriteMovie
+   * @param movieId {string}
+   * @return current user's updated favorite movie list
+   */
   addFavoriteMovie(movieId: string): void {
     this.fetchApiData.addFavoriteMovies(movieId).subscribe((response: any) => {
       this.snackBar.open('Added to favorites!', 'OK', {
@@ -113,6 +130,12 @@ export class MovieCardComponent implements OnInit {
     return this.getFavMovies();
   }
 
+  /**
+   * call API end-point to remove a movie from user's favorite movie list
+   * @function removeFavoriteMovie
+   * @param movieId {string}
+   * @return current user's updated favorite movie list
+   */
   removeFavoriteMovie(movieId: string): void {
     this.fetchApiData
       .deleteFavoriteMovies(movieId)
@@ -125,16 +148,22 @@ export class MovieCardComponent implements OnInit {
       });
   }
 
-  /* isFavorite(MovieId: string): boolean {
-    return this.favMovies.some((movie) => movie._id === MovieId);
-  } */
-
+  /**
+   * Toggle favorite icon button
+   * @function toggleFavIcon
+   * @param movieId {string}
+   */
   toggleFavIcon(movieId: string): void {
     this.checkFavorites(movieId)
       ? this.removeFavoriteMovie(movieId)
       : this.addFavoriteMovie(movieId);
   }
 
+  /**
+   * Check favorite movie list for specific movie ID
+   * @function checkFavorites
+   * @param movieId {string}
+   */
   checkFavorites(movieId: string): any {
     let favIds = this.favMovies.map(function (favMovie: any) {
       return favMovie._id;
