@@ -1,0 +1,25 @@
+<mat-card class="main-page">
+  <img mat-card-image src="https://i.imgur.com/IOx97Xx.png" alt="App logo" />
+  <mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        (click)="openUserRegistrationDialog()"
+        style="margin-right: 10px"
+        color="primary"
+        class="main-page-button"
+      >
+        Sign Up
+      </button>
+      <button
+        mat-raised-button
+        style="margin-right: 10px"
+        (click)="openUserLoginDialog()"
+        color="primary"
+        class="main-page-button"
+      >
+        Login
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
