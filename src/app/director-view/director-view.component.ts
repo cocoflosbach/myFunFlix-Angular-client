@@ -1,3 +1,9 @@
+/**
+ * DirectorViewComponent renders a mat dialog card that displays more information
+ * about a movie's director.
+ * @module DirectorViewComponent
+ */
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 

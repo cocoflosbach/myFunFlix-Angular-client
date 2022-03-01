@@ -1,3 +1,10 @@
+/**
+ * The WelcomePageComponent renders a mat dialog card to enable
+ * a new user register to use the application. This includes a
+ * formfield and a submit button tthat sends inputed data to the database.
+ * @module UserRegistrationFormComponent
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';

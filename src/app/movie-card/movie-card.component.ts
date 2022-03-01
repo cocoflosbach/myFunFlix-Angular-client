@@ -1,3 +1,11 @@
+/**
+ * MovieCardComponent renders a grid display of all the movies in the
+ * database. It also renders buttons to open a movie's synopsis, see
+ * more information on the movie's director and Genres,
+ * as well as a favorite button that adds movies to the user's favorite list.
+ * @module MovieCardComponent
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';

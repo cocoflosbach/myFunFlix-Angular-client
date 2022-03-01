@@ -1,3 +1,9 @@
+/**
+ * GenreViewComponent renders a mat dialog card that displays more information
+ * about a movie's genre.
+ * @module GenreViewComponent
+ */
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 

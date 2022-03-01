@@ -1,3 +1,11 @@
+/**
+ * The UserLoginFormComponent renders a mat dialog card to enable
+ * a returning user login to use the application. This includes a
+ * formfield and a submit button that sends a request to
+ * authenticate user before granting access to the main-page
+ * @module UserLoginFormComponent
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';

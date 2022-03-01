@@ -1,3 +1,9 @@
+/**
+ * The AppComponent is the root component rendered in the index.html file and is the parent
+ * component for the app.
+ * @module AppComponent
+ */
+
 import { Component } from '@angular/core';
 
 @Component({

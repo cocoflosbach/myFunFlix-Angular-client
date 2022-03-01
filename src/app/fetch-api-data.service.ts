@@ -1,3 +1,12 @@
+/**
+ * The FetchApiDataService is used to define all http requests to the myFunFlix
+ * movie API endpoints. The different http request include getting a list of all movies,
+ * getting a user's details, getting a list of a user's favorite movie list,
+ * adding and removing movies from the favorite list, as well as updating a user's
+ * information or deleting the user all together.
+ * @module FetchApiDataService
+ */
+
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs';
 import {

@@ -1,3 +1,10 @@
+/**
+ * NavigationBarComponent renders mat navigation toolbar that provides a
+ * logged in user the option to navigate between different pages of the app.
+ * It also provides the option to log out of the application
+ * @module NavigationBarComponent
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 

@@ -1,3 +1,11 @@
+/**
+ * The ProfileViewComponent renders a page displaying the user's details.
+ * This includes a mat card rendering the user's current informatiion,
+ * an input field that allows the user to update their information,
+ * and a mat card that renders a grid of the user's favorite movies
+ * @module ProfileViewComponent
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
