@@ -26,6 +26,7 @@ export class ProfileViewComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   favMovies: any[] = [];
+  movies: any[] = [];
   user: any = localStorage.getItem('user');
   isFavorite: boolean = false;
 
@@ -85,6 +86,12 @@ export class ProfileViewComponent implements OnInit {
     this.fetchApiData.getUser().subscribe((response: any) => {
       this.user = response;
       this.favMovies = response.FavoriteMovies;
+      this.fetchApiData.getAllMovies().subscribe((response: any) => {
+        this.movies = response;
+        this.favMovies = this.movies.filter((movie: any) => {
+          return this.favMovies.includes(movie._id);
+        });
+      });
       console.log(this.favMovies);
       return this.favMovies;
     });
