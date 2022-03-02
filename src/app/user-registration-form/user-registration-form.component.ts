@@ -1,5 +1,5 @@
 /**
- * The WelcomePageComponent renders a mat dialog card to enable
+ * The UserRegistrationFormComponents renders a mat dialog card to enable
  * a new user register to use the application. This includes a
  * formfield and a submit button tthat sends inputed data to the database.
  * @module UserRegistrationFormComponent
